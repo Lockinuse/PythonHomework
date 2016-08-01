@@ -66,17 +66,20 @@ class Employee:
             monthlytax = self.get_monthly_gross_pay() * .36
         return monthlytax
 
-    def __get_monthlypay(self):
-
+    def __get_monthlypayaftertax(self):
+        monthlypay_aftertax = self.get_monthly_gross_pay() - self.__get_monthlytax()
+        return monthlypay_aftertax
 
     def display_information(self):
         print("The employees name is: ", self.__employee_name)
         print("The total regular hours worked is: ", self.__regular_hours)
         print("The total overtime hours worked is: ", self.__overtime_hours)
-        print(self.__employee_name, "has a pay rate of:  ", self.__hourly_rate)
-        print(self.__employee_name, "has a monthly regular pay this month of: ", self.get_monthly_regular_pay())
-        print(self.__employee_name, "has a monthly overtime pay this month of: ", self.get_monthly_overtime_pay())
-        print(self.__employee_name, "has a monthly gross pay of: ", self.get_monthly_gross_pay())
+        print(self.__employee_name, "has a pay rate of:  ", format(self.__hourly_rate, ".2f"))
+        print(self.__employee_name, "has a monthly regular pay this month of: ", format(self.get_monthly_regular_pay(), ".2f"))
+        print(self.__employee_name, "has a monthly overtime pay this month of: ", format(self.get_monthly_overtime_pay(), ".2f"))
+        print(self.__employee_name, "has a monthly gross pay of: ", format(self.get_monthly_gross_pay(), ".2f"))
+        print(self.__employee_name, "has this monthly tax of: ", format(self.__get_monthlytax(), ".2f"))
+        print(self.__employee_name, "has a net monthly pay of: ", format(self.__get_monthlypayaftertax(), ".2f"))
 
 
 
